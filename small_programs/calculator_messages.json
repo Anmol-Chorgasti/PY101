@@ -1,4 +1,9 @@
 {
+
+    "Choose language": "Please enter 1 for english, 2 for German\nBitte geben Sie 1 für Englisch und 2 für Deutsch ein",
+    "language error": "Hmm, please enter 1 or 2, your current answer is invalid",
+
+    "en" : {
     "Welcome" : "Welcome to Calculator!",
     "Input number 1" : "Please enter the first number: ",
     "Input number 2" : "Please enter the second number: ",
@@ -6,5 +11,18 @@
     "Invalid operation" : "Hmm, the operation does not seem valid. Try again",
     "Input operation" : "Please enter which operation you would like to perform\n1) Add 2) Subtract 3) Multiply 4) Divide 5) Exponent",
     "Calculate again": "Do you want to calculate something else? (Y/n)",
-    "Invalid calculate again" : "Please enter either Y for yes or N for no! Try again"
+    "Invalid calculate again" : "Please enter either Y for yes or N for no! Try again",
+    "result" : "The result is: "
+},
+    "de" : {
+        "Welcome" : "Willkommen beim Rechner!",
+        "Input number 1" : "Bitte geben Sie die erste Zahl ein: ",
+        "Input number 2" : "Bitte geben Sie die zweite Zahl ein: ",
+        "Invalid input" : "Hmmm, das scheint keine gültige Eingabe zu sein. Versuchen Sie es erneut",
+        "Invalid operation" : "Hmm, die Operation scheint ungültig zu sein. Versuchen Sie es erneut",
+        "Input operation" : "Bitte geben Sie ein, welche Operation Sie ausführen möchten\n1) Addieren 2) Subtrahieren 3) Multiplizieren 4) Dividieren 5) Exponent",
+        "Calculate again": "Möchten Sie etwas anderes berechnen? (Y/n)",
+        "Invalid calculate again" : "Bitte geben Sie entweder Y für Ja oder N für Nein ein! Versuchen Sie es erneut",
+        "result" : "Das Ergebnis ist: "
+    }
 }

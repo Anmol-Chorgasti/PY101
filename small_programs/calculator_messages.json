@@ -1,0 +1,10 @@
+{
+    "Welcome" : "Welcome to Calculator!",
+    "Input number 1" : "Please enter the first number: ",
+    "Input number 2" : "Please enter the second number: ",
+    "Invalid input" : "Hmmm, that does not seem like a valid input. Try again",
+    "Invalid operation" : "Hmm, the operation does not seem valid. Try again",
+    "Input operation" : "Please enter which operation you would like to perform\n1) Add 2) Subtract 3) Multiply 4) Divide 5) Exponent",
+    "Calculate again": "Do you want to calculate something else? (Y/n)",
+    "Invalid calculate again" : "Please enter either Y for yes or N for no! Try again"
+}

@@ -4,7 +4,9 @@
 # X Display the final result back to the user
 # X improve user interface
 # X check if both numbers and operation entered are valid
-# ask if user wants to calculate again?
+# X ask if user wants to calculate again?
+# X read messages to display from json file
+# X adding language support for German
 
 import json
 
@@ -17,10 +19,23 @@ def prompt(message):
 def invalid_number(number_str): #number_str is entered in string format
     #using try except to catch error and return True or false
     try:
-        int(number_str)
+        float(number_str)
     except ValueError:
         return True
     return False
+
+prompt(data["Choose language"])
+locale = input()
+
+while locale not in ['1','2']:
+    #prompting user to opt for the correct language choice
+    prompt(data["language error"])
+    locale = input()
+
+if locale == '1':
+    data = data["en"]
+elif locale == '2':
+    data = data["de"]
 
 prompt(data["Welcome"])
 
@@ -56,17 +71,22 @@ while RUN:
     #using match case as that is more readable
     match operation:
         case '1':
-            output = int(number1) + int(number2)
+            output = float(number1) + float(number2)
         case '2': #2 represents subtraction
-            output = int(number1) - int(number2)
+            output = float(number1) - float(number2)
         case '3': #3 represents multiplication
-            output = int(number1) * int(number2)
+            output = float(number1) * float(number2)
         case '4': #4 represents division
-            output = int(number1) / int(number2)
+            try:
+                output = float(number1) / float(number2)
+            except ZeroDivisionError:
+                prompt("Cannot divide by zero")
+                output = None
         case '5': #5 represents exponentiation
-            output = int(number1) ** int(number2)
+            output = float(number1) ** float(number2)
 
-    prompt(f"The result is: {output}")
+    result = data["result"]
+    prompt(f"{result} {output}")
 
     print()
     prompt(data["Calculate again"])

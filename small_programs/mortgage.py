@@ -134,7 +134,7 @@ while True:
     output =  loan * (monthly_interest_rate /
                 (1 - (1 + monthly_interest_rate) ** (-1 * duration_months)))
     output = round(output, 2) # to display amount in a format like $100.56
-    total_repaid_amount = output * duration_months
+    total_repaid_amount = round(output * duration_months,2)
 
     # displaying monthly mortage payment and final total amount repaid
     print()
@@ -148,11 +148,13 @@ while True:
     choice = input()
 
     acceptable_choices = ['Y','y','n','N']
-    while choice[0] not in acceptable_choices: # incase user enters yes or no
+    while choice == "" or (choice[0] not in acceptable_choices):
         prompt("Please enter Y for yes\n"
                 "Please enter N for no")
         choice = input()
 
-    if choice not in acceptable_choices[0:2]:
+    if choice.lower() not in ['y','yes','yup','yeah']:
         prompt("Thank you for using our mortgage calculator! :)")
         break
+
+    

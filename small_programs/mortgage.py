@@ -148,7 +148,6 @@ while True:
 
     acceptable_choices = ['Y','y','n','N']
     while choice[0] not in acceptable_choices: # incase user enters yes or no
-        print(choice[0])
         prompt("Please enter Y for yes\n"
                 "Please enter N for no")
         choice = input()

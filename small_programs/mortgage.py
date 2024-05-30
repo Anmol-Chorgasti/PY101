@@ -6,7 +6,7 @@ A module to calculate the monthly mortgage payments user must make based on:
 
 EDGE CASES
 - The program considers <= 0% and > 100% interest rates as invalid rates,
-- The duration of months should be such that loan_duration_months/12 should be an
+- The duration of months should be such that loan_duration_months/12 should be
 integer
 - Any loan amount below $1000 is considered too small and invalid
 - Any loan above 10 million USD is considered too large and invalid
@@ -17,7 +17,7 @@ integer
 # X take user inputs for loan amount, duration, interest rate
 # X verify inputs by checking them for format and edge case situations
 # X test inputs by checking them for edge case situations
-# X generate intermediate inputs such as duration in months, and monthly interest rate
+# X generate intermediate inputs - duration in months, monthly interest rate
 # X calculate monthly payment
 # X display monthly payment in $ and cents format
 # X enable user to calculate multiple times
@@ -131,11 +131,12 @@ while True:
     monthly_interest_rate = float(interest_year) / (100 * 12)
 
     # calculate output
-    output =  loan * (monthly_interest_rate / (1 - (1 + monthly_interest_rate) ** (-1 * duration_months)))
-    output = round(output, 2) # to display amount in a format similar to $100.56
+    output =  loan * (monthly_interest_rate /
+                (1 - (1 + monthly_interest_rate) ** (-1 * duration_months)))
+    output = round(output, 2) # to display amount in a format like $100.56
     total_repaid_amount = output * duration_months
 
-    # displaying monthly mortage payment and predicted total amount repaid
+    # displaying monthly mortage payment and final total amount repaid
     print()
     prompt(f"The monthly mortage payment is: ${output}\n")
     prompt(f"Your payments will total ${total_repaid_amount} after {duration_year} years")

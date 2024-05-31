@@ -49,7 +49,7 @@ def expand_user_choice(choice):
             case 'p':
                 return VALID_SHORTFORM_CHOICES['p']
             case 'l':
-                return VALID_SHORTFORM_CHOICES['p']
+                return VALID_SHORTFORM_CHOICES['l']
     elif len(choice) == 2:
         match choice:
             case 'sc':

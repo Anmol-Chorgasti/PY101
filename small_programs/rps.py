@@ -14,6 +14,9 @@ WINNING_COMBINATIONS = {
     'spock': ['scissors', 'rock']
 }
 MAX_POINTS = 3
+VALID_AFFIRMATIONS = ['y','yes','ye','yeah','yep','yea','ya','yokay','yo']
+VALID_DENIALS = ['n','nope','nuh-uh','nein','nyet','nada','no way','not',
+                 'no chance','negative','not right now','no mood','no']
 
 def prompt(message):
     print(f'==> {message}')
@@ -59,12 +62,12 @@ def expand_user_choice(choice):
 def get_player_choice():
 
     prompt("Please enter your choice: ")
-    user_choice = input().lower()
+    user_choice = input().lower().strip()
     user_choice = expand_user_choice(user_choice)
 
     while user_choice not in VALID_CHOICES:
         prompt("Please enter a valid input")
-        user_choice = input().lower()
+        user_choice = input().lower().strip()
         user_choice = expand_user_choice(user_choice)
 
     return user_choice
@@ -83,11 +86,14 @@ def get_result(player, computer):
     return 'tie'
 
 # display the result of each turn
-def display_result(result):
+def display_result(result, player_choice, computer_choice):
+
+    prompt("PREVIOUS ROUND RESULTS!")
+    prompt(f"Player chose {player_choice}. Computer chose {computer_choice}")
     if result != 'tie':
-        prompt(f"{result.capitalize()} wins this turn!\n")
+        prompt(f"{result.capitalize()} won the previous round!\n")
     else:
-        prompt(f"The choices are in! It is a {result}\n")
+        prompt(f"The previous round was a {result}!\n")
 
 # display the current scores of the players involved after each turn
 def display_current_score(player_count, computer_count):
@@ -100,8 +106,7 @@ def get_grand_winner(player):
     return 'Computer'
 
 def display_grand_winner(winner):
-    prompt(f"{winner} is the grand winner of this game!")
-    print()
+    prompt(f"{winner} is the grand winner of this game!\n\n")
 
 def always_display(player_count, computer_count):
     ui_line = '-' * 50
@@ -130,19 +135,29 @@ def run_game():
         player_choice = get_player_choice()
         computer_choice = get_computer_choice()
 
-        prompt(f"Player chose {player_choice}. Computer chose {computer_choice}")
         result = get_result(player_choice, computer_choice)
         player_count = increment_player_count(result, player_count)
         computer_count = increment_computer_count(result, computer_count)
 
-        display_result(result)
-        clear_screen(1.8)
+        clear_screen(0)
+        display_result(result, player_choice, computer_choice)
 
-    always_display(player_count, computer_count)
+    display_current_score(player_count, computer_count)
     display_grand_winner(get_grand_winner(player_count))
+
+
+def yes_or_no(user_input):
+    if len(user_input) == 1: #allowing for y and n inputs
+        return user_input
+    if user_input in VALID_AFFIRMATIONS:
+        return user_input
+    if user_input in VALID_DENIALS:
+        return user_input
+    return 'invalid'
 
 def play_again():
     continue_game = input().lower()
+    continue_game = yes_or_no(continue_game)
 
     while True:
         if continue_game.startswith('y') or continue_game.startswith('n'):
@@ -150,6 +165,7 @@ def play_again():
 
         prompt("Please enter 'y' or 'n'")
         continue_game = input().lower()
+        continue_game = yes_or_no(continue_game)
 
     if continue_game[0] == 'y':
         return True

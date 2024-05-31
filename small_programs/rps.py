@@ -179,3 +179,9 @@ while True:
         break
 
     os.system('clear')
+
+# THINGS TO DO TOMORROW
+# Use dictionary to retrieve actual values
+# try and reduce data and repeating lines of code
+# improve some UI features like clearing terminal, displaying score well etc
+# check pylint once more
